@@ -28,6 +28,7 @@ public class Sedan extends Vehicle {
 	+ "Year: " + year + "\n"
 	+ "Drive Train: " + drivetrain + "\n"
 	+ "Price: " + price + "\n"
-	+ "Quantity: " + quantity + "\n";
+	+ "Quantity: " + quantity + "\n"
+	+ "Trunk Size: " + trunkSize + "\n";
     }
 }
