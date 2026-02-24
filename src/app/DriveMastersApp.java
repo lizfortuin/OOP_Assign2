@@ -157,7 +157,19 @@ public class DriveMastersApp {
 			}
 			break;
 			
-		case "2": // SUV
+		case "2": // Hatchback
+			System.out.println("Enter HatchType (S for Standard Liftgate, T for Split Liftgate, P for Power Liftgate): ");
+			char lg = sc.nextLine().trim().toUpperCase().charAt(0);
+			
+			System.out.println("\nMatching Vehicles");
+			for (Vehicle v :vehicles) {
+				if (v instanceof Hatchback h && h.getHatchType() == lg) {
+					System.out.println(v + "\n");
+				}
+			}
+			break;
+			
+		case "3": // SUV
 			System.out.print("Enter Drivetrain (AWD for All Wheel Drive, 4WD for Four Wheel Drive): ");
 			String drive = sc.nextLine().trim().toUpperCase();
 			
@@ -170,7 +182,7 @@ public class DriveMastersApp {
 			
 			break;
 			
-		case "3": // Hybrid
+		case "4": // Hybrid
 			System.out.print("Enter a PowerTrain (E for Series Hybrid , A for Parallel Hybrid, PHEV for Plug-in Hybrid): "); 
 			String pt = sc.nextLine().trim().toUpperCase();
 			
@@ -189,25 +201,7 @@ public class DriveMastersApp {
 			
 			break;
 			
-		case "4": // Hybrid
-			System.out.print("Enter a PowerTrain (E for Series Hybrid , A for Parallel Hybrid, PHEV for Plug-in Hybrid): "); 
-			String pt1 = sc.nextLine().trim().toUpperCase();
-			
-			System.out.println("\nMatching Vehicles");
-			for (Vehicle v : vehicles) {
-				if (v.getVehicleType().equalsIgnoreCase("Hybrid")) {
-					try {
-						var method = v.getClass().getMethod("getPowerTrain");
-						String value = (String) method.invoke(v);
-						if (value.equalsIgnoreCase(pt1)) {
-							System.out.println(v + "\n");
-						}
-					} catch (Exception ignored) {}
-				} 
-			}
-			break;
-			
-		case "5": // Pickup Truck
+		case "5": //Pickup Truck
 			System.out.print("Enter CargoBeds (SB for Short Beds , EB for Extended Beds, DB for Dump Beds): "); 
 			String bed = sc.nextLine().trim().toUpperCase();
 			
@@ -224,6 +218,7 @@ public class DriveMastersApp {
 				}
 			}
 			break;
+			
 			
 		default:
 			System.out.println("Invalid subtype.\n");
