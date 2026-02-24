@@ -111,7 +111,7 @@ public class DriveMastersApp {
 		System.out.println("Enter vehicle type to search for: (Sedan, SUV, Hatchback, Pickup Truck and Hybrid car) ");
 		String type = sc.nextLine().trim();
 		
-		System.out.println("Matching vehiles: ");
+		System.out.println("Matching vehicles: ");
 		
 		boolean foundAny = false;
 		
@@ -189,7 +189,25 @@ public class DriveMastersApp {
 			
 			break;
 			
-		case "4": // Pickup Truck
+		case "4": // Hybrid
+			System.out.print("Enter a PowerTrain (E for Series Hybrid , A for Parallel Hybrid, PHEV for Plug-in Hybrid): "); 
+			String pt1 = sc.nextLine().trim().toUpperCase();
+			
+			System.out.println("\nMatching Vehicles");
+			for (Vehicle v : vehicles) {
+				if (v.getVehicleType().equalsIgnoreCase("Hybrid")) {
+					try {
+						var method = v.getClass().getMethod("getPowerTrain");
+						String value = (String) method.invoke(v);
+						if (value.equalsIgnoreCase(pt1)) {
+							System.out.println(v + "\n");
+						}
+					} catch (Exception ignored) {}
+				} 
+			}
+			break;
+			
+		case "5": // Pickup Truck
 			System.out.print("Enter CargoBeds (SB for Short Beds , EB for Extended Beds, DB for Dump Beds): "); 
 			String bed = sc.nextLine().trim().toUpperCase();
 			
